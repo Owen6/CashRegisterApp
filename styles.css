@@ -2,26 +2,127 @@
   box-sizing: inherit;
   padding: 0;
   margin: 0;
+  scroll-behavior: smooth;
+  --text-color: #2F4F4F;
+  --text-color-2: #696969;
+  --bg-color: #FFE4E1;
+  --bg-color-2: #E6E6FA;
+  --num-btn-color: #B0E0E6;
+  --submit-btn-color: #98FB98;
+  --highlight-color: #FFDAB9;
+  --border-color: #D3D3D3;
+  --input-color: #FFF0F5;
 }
   
 html {
   box-sizing: border-box;
+  background-color: var(--bg-color-2);
+  color: var(--text-color);
+  font-family: "Times New Roman";
+}
+
+header {
+  width: 100%;
+  text-align: center;
+  padding: 2%;
+  font-size: 30px;
+}
+
+header p {
+  margin-top: 1%;
+  color: var(--text-color-2);
+  font-size: 20px;
+}
+
+.register-screen {
+  width: 80%;
+  padding: 2%;
+  margin: 2% auto;
+  background-color: var(--bg-color);
+  border-radius: 30px;
+  border: 4px solid var(--border-color)
+}
+
+#price {
+  width: 100%;
+  text-align: center;
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.cash {
+  width: 100%;
+  margin-top: 2%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.symbol {
+  font-size: 40px;
+  font-family: "Times New Roman";
+}
+
+#cash {
+  width: 90%;
+  background-color: var(--input-color);
+  border: 4px solid var(--border-color);
+  height: 50px;
+  font-size: 40px;
+  font-family: "Times New Roman";
 }
 
 .register-body {
   display: flex;
-  width: 100%;
+  justify-content: space-evenly; 
+  padding: 5%;
+  margin: auto;
+  width: 80%;
+  background-color: var(--bg-color);
+  border-radius: 30px;
+  border: 4px solid var(--border-color);
 }
 
 .keyboard {
-  width: 50%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(4, auto);
+  gap: 10px;
+  width: 55%;
+  background-color: var(--bg-color-2);
+  border: 4px solid var(--border-color);
+  padding: 25px;
 }
 
 .btn {
-  width: 33%;
+  width: 100%;
+  background-color: var(--num-btn-color);
+  font-family: "Times New Roman";
+  font-size: 25px;
+  font-weight: bold;
+  border: 4px solid var(--border-color);
+}
+
+.btn, #purchase-btn {
+  border-radius: 10px;
+}
+
+.btn:hover, #purchase-btn:hover{
+  border: 4px solid var(--highlight-color);
 }
 
 #purchase-btn {
   display: inline-block;
-  width: 66%;
+  grid-column: span 2;
+  background-color: var(--submit-btn-color);
+  font-family: "Times New Roman";
+  font-size: 25px;
+  font-weight: bold;
+  border: 4px solid var(--border-color);
+}
+
+.output-screen {
+  width: 43%;
+  background-color: var(--bg-color-2);
+  border: 4px solid var(--border-color);
+  padding: 25px;
 }

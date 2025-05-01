@@ -1,5 +1,5 @@
-//let price = 1.87;
-let price = 19.5;
+//Start of provided Code by freecodecamp.org
+let price = 1.87;
 let cid = [
   ['PENNY', 1.01],
   ['NICKEL', 2.05],
@@ -11,6 +11,7 @@ let cid = [
   ['TWENTY', 60],
   ['ONE HUNDRED', 100]
 ];
+//end of provided code
 
 const values = {'PENNY': 0.01,'NICKEL': 0.05,'DIME': 0.10,'QUARTER': 0.25,'ONE': 1,'FIVE': 5,'TEN': 10,'TWENTY': 20,'ONE HUNDRED': 100};
 
@@ -18,14 +19,23 @@ const cash = document.getElementById("cash");
 const changeDue = document.getElementById("change-due");
 const purchaseBtn = document.getElementById("purchase-btn");
 const cidDiv = document.getElementById("cid");
+const priceContainer = document.getElementById("price");
 
 
 let output = ``;
 
 window.onload = () => {
   purchaseBtn.addEventListener('click', checkInput);
+  purchaseBtn.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      checkInput()
+    }
+  });
+
+  priceContainer.innerText = `Price: $${price}`;
   loadButtons();
   updateCidDiv();
+  
 }
 
 
@@ -77,14 +87,14 @@ const updateCidDiv = () => {
 const range = (start, end) => Array(end - start + 1).fill(start).map((element, index) => element + index);
 
 const loadButtons = () => {
-  const numberDiv = document.getElementById("number-btns");
+  const numberDiv = document.querySelector(".keyboard");
   const createButton = (val) => {
     const btn = document.createElement("button");
     btn.className = "btn";
     btn.id = `btn-${val}`;
     btn.textContent = val;
     btn.addEventListener('click',buttonFuncs);
-    numberDiv.appendChild(btn);
+    numberDiv.insertBefore(btn,purchaseBtn);
   }
   range(0,9).forEach(num => {
     createButton(num);
@@ -131,4 +141,6 @@ const registerSum = () => {
   //console.log(sum)
   return sum;
 }
+
+
 

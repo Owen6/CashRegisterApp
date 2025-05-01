@@ -7,12 +7,19 @@
     <meta charset="utf-8">
   </head>
   <body>
+    <header>
+      <h1>Cash Register</h1>
+      <p>Calculate the change due based on amount of money given and currency available in drawer.</p>
+    </header>
     <section class="register-screen">
-      <input id="cash"></input>
+      <p id="price"></p>
+      <div class="cash">
+        <p class="symbol">$</p>
+        <input id="cash"></input>
+      </div>
     </section>
     <section class="register-body">
       <div class="keyboard">
-        <div id="number-btns"></div>
         <button id="purchase-btn">=</button>
       </div>
       <div class="output-screen">
