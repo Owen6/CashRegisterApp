@@ -1,9 +1,27 @@
 *, ::before, ::after {
-    box-sizing: inherit;
-    padding: 0;
-    margin: 0;
-  }
-    
-  html {
-    box-sizing: border-box;
-  }
+  box-sizing: inherit;
+  padding: 0;
+  margin: 0;
+}
+  
+html {
+  box-sizing: border-box;
+}
+
+.register-body {
+  display: flex;
+  width: 100%;
+}
+
+.keyboard {
+  width: 50%;
+}
+
+.btn {
+  width: 33%;
+}
+
+#purchase-btn {
+  display: inline-block;
+  width: 66%;
+}

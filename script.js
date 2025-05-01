@@ -1,5 +1,5 @@
 //let price = 1.87;
-let price = 3.26;
+let price = 19.5;
 let cid = [
   ['PENNY', 1.01],
   ['NICKEL', 2.05],
@@ -17,13 +17,15 @@ const values = {'PENNY': 0.01,'NICKEL': 0.05,'DIME': 0.10,'QUARTER': 0.25,'ONE':
 const cash = document.getElementById("cash");
 const changeDue = document.getElementById("change-due");
 const purchaseBtn = document.getElementById("purchase-btn");
+const cidDiv = document.getElementById("cid");
 
-const numberDiv = document.getElementById("number-btns");
 
 let output = ``;
 
 window.onload = () => {
   purchaseBtn.addEventListener('click', checkInput);
+  loadButtons();
+  updateCidDiv();
 }
 
 
@@ -55,20 +57,44 @@ const checkInput = () => {
 }
 
 const updateChangeDiv = valuesInput => {
-  /**cid.slice().reverse().forEach(el => {
-    changeDue.textContent += `${el[0]}: $${el[1]}`;
-  })
-  */
-  //fix
+  changeDue.innerHTML += `<div>`
   Object.entries(valuesInput).reverse().forEach(([key,value]) => {
     if (value > 0){
-      changeDue.textContent += ` ${key}: $${(value * values[key])}`;
+      changeDue.innerHTML += ` ${key}: $${(value * values[key])}<br>`;
     }
-    //console.log(el)
   });
+  updateCidDiv();
 }
 
+const updateCidDiv = () => {
+  cidDiv.innerHTML = `Cash In Drawer<br>`;
+  cid.slice().reverse().forEach((el) => {
+    //console.log("teset")
+    cidDiv.innerHTML += `${el[0]} : ${Math.ceil(el[1] / values[el[0]])}<br>`;
+  })
+}
 
+const range = (start, end) => Array(end - start + 1).fill(start).map((element, index) => element + index);
+
+const loadButtons = () => {
+  const numberDiv = document.getElementById("number-btns");
+  const createButton = (val) => {
+    const btn = document.createElement("button");
+    btn.className = "btn";
+    btn.id = `btn-${val}`;
+    btn.textContent = val;
+    btn.addEventListener('click',buttonFuncs);
+    numberDiv.appendChild(btn);
+  }
+  range(0,9).forEach(num => {
+    createButton(num);
+  })
+}
+
+const buttonFuncs = (el) => {
+  console.log(el.target.textContent);
+  cash.value += el.target.textContent;
+}
 
 const calcChange = (change) => {
   let tempObj = {'PENNY': 0,'NICKEL': 0,'DIME': 0,'QUARTER': 0,'ONE': 0,'FIVE': 0,'TEN': 0,'TWENTY': 0,'ONE HUNDRED': 0, 'CHANGE': 0};
